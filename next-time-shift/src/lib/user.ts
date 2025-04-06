@@ -1,0 +1,1 @@
+// Handles mapping the user from Supabase table to Typescript type
