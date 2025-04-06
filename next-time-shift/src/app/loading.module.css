@@ -1,0 +1,13 @@
+.skeletonImage {
+  width: 128px;
+  height: 128px;
+  background-color: var(--text3);
+  animation: var(--animate-blink);
+}
+
+.skeletonContent {
+  height: var(--size-3);
+  width: 100%;
+  background-color: var(--text3);
+  animation: var(--animate-blink);
+}

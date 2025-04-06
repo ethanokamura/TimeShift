@@ -1,26 +1,161 @@
-@import "tailwindcss";
+@import "open-props/style";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #10141a;
+  --background-2: #151b24;
+  --surface: #1c232e;
+  --accent: #61AFEF;
+  --text: #e1e6f0;
+  --text2: #969eb0;
+  --text3: #666e7d;
+  --content-width: 90ch;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+*::-webkit-scrollbar { display: none; }
+
+* {
+  outline: none;
+  user-select: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+  
+  color: var(--text);
+  background: linear-gradient(
+    var(--background-2),
+    var(--background)
+  );
+  background-size: cover;
+  background-attachment: fixed;
+
+  font-family: var(--font-rubik);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
 }
+
+h1, h2, h3 {
+  font-weight: var(--font-weight-8);
+  transition: all 0.3s linear;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: var(--size-2) 0px;
+}
+
+h1 { font-size: var(--font-size-6); }
+h2 { font-size: var(--font-size-5); }
+h3 { font-size: var(--font-size-4); }
+h4 { font-size: var(--font-size-3); }
+
+button {
+  background-color: var(--surface);
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: var(--radius-2);
+  padding: var(--size-2);
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: var(--text);
+  text-decoration: none;
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-8);
+  transition: transform 0.1s linear;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: var(--font-weight-8);
+  transition: transform 0.1s linear;
+}
+
+button:hover, a:hover {
+  transform: scale(1.25);
+}
+
+span {
+  color: var(--text3);
+  font-size: var(--font-size-2);
+}
+
+p, li {
+  color: var(--text2);
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-5);
+}
+
+b {
+  font-weight: var(--font-weight-8);
+}
+
+main {
+  max-width: var(--content-width);
+  padding: min(var(--size-7), 5%) min(var(--size-10), 5%);
+  margin: auto;
+  padding-bottom: min(var(--size-content-1), 40%);
+}
+
+hr {
+  height: 2px;
+  border-radius: var(--radius-2);
+  margin: var(--size-5) 0;
+  background-color: var(--text3);
+  opacity: 0.25;
+  border: none;
+}
+
+textarea {
+  width: 100%;
+  background-color: var(--surface);
+  border: 2px solid var(--text2);
+  padding: var(--size-2);
+  border-radius: var(--radius-2);
+  color: var(--text);
+  font-family: var(--font-rubik);
+}
+
+textarea::placeholder {
+  color: var(--text3);
+  font-family: var(--font-rubik);
+}
+
+footer {
+  display: flex;
+  position: fixed;
+  align-items: end;
+  bottom: 0;
+  left: var(--size-5);
+  padding: var(--size-5);
+  height: 15%;
+  width: 100%;
+  color: var(--text2);
+  background: linear-gradient(to top, var(--background), transparent);
+}
+
+/* Media Queries - For responsive design */
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {}
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {}
+
+/* Desktop (min-width: 1025px) */
+@media (min-width: 1025px) {}
+
+/* Large screens (min-width: 1440px) */
+@media (min-width: 1440px) {}
