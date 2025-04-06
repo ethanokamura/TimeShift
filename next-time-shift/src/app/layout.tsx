@@ -9,6 +9,7 @@ import * as config from "@/lib/config";
 const rubik = Rubik({
   variable: "--font-rubik",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,8 +24,8 @@ export default function RootLayout({
 }>) {
   return (
     <AuthProvider>
-      <html lang="en">
-        <body className={`${rubik.variable}`} >
+      <html lang="en" className={`${rubik.variable}`} suppressHydrationWarning>
+        <body>
           <NavMenu />
           {children}
           <Footer name={config.title} />
