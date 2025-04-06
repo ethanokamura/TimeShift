@@ -8,8 +8,8 @@ export default function NavMenu() {
     <nav className={styles.nav} >
       <Link href={'/'}>Home</Link>
       <div className={styles.menu}>
-        <Link href={'/create'}>Create</Link>
-        <Link href={'/edit'}>Edit</Link>
+        {/* <Link href={'/create'}>Create</Link> */}
+        {/* <Link href={'/edit'}>Edit</Link> */}
         <SignInButton />
       </div>
     </nav>
