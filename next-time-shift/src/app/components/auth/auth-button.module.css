@@ -1,0 +1,22 @@
+.pfp {
+  border-radius: 50%;
+}
+
+.button {
+  background-color: var(--accent);
+  color: var(--background);
+  height: fit-content;
+}
+
+.skeletonImage {
+  border-radius: 50;
+  width: 48px;
+  height: 48px;
+  background-color: var(--text3);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: var(--font-size-10);
+  animation: var(--animation-blink);
+}
