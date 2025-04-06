@@ -32,6 +32,6 @@
   transform: scale(1.25);
 }
 
-.menu a {
+.nav a {
   font-size: var(--font-size-4);
 }
