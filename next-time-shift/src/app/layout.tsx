@@ -1,13 +1,18 @@
 import type { Metadata } from "next";
-import { Rubik } from "next/font/google";
+import { Rubik, Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
-import AuthProvider from "@/app/components/auth/auth-provider";
-import NavMenu from "@/src/app/components/navbar/nav-menu";
-import Footer from "@/app/components/footer/footer";
-import * as config from "@/lib/config";
+import * as config from "@/data/constants";
+import { ClerkProvider } from "@clerk/nextjs";
+import Footer from "@/app/components/footer/Footer";
 
 const rubik = Rubik({
   variable: "--font-rubik",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const grotesk = Hanken_Grotesk({
+  variable: "--font-grotesk",
   subsets: ["latin"],
   display: "swap",
 });
@@ -23,14 +28,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <AuthProvider>
-      <html lang="en" className={`${rubik.variable}`} suppressHydrationWarning>
+    <ClerkProvider>
+      <html lang="en" className={`${rubik.variable} ${grotesk.variable} antialiased`} suppressHydrationWarning>
         <body>
-          <NavMenu />
           {children}
           <Footer name={config.title} />
         </body>
       </html>
-    </AuthProvider>
+    </ClerkProvider>
   );
 }

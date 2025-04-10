@@ -1,11 +1,10 @@
-import style from "./loading.module.css";
-import SkeletonHeader from "@/app/components/header/skeleton-header";
+import SkeletonHeader from "@/app/components/header/SkeletonHeader";
 
 export default function Loading() {
   return (
     <main>
       <SkeletonHeader />
-      <div className={style.skeletonContent}></div>
+      <div className="h-10 w-full bg-text3 animate-pulse"></div>
     </main>
   );
 }

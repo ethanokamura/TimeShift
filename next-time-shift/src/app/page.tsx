@@ -1,11 +1,24 @@
-import * as config from "@/lib/config";
-import Header from "@/app/components/header/header";
-import style from "./home.module.css";
+import * as config from "@/data/constants";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import Starfield from "@/app/components/stars/StarField";
+import PublicNavMenu from "@/app/components/navbar/PublicNavMenu";
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Get userId
+  const { userId } = await auth();
+  // User is already signed in
+  if (userId != null) redirect("/dashboard");
   return (
-    <main className={style.home}>
-      <Header title={config.title} subtitle="File Management System" description={config.description} />
-    </main>
+    <>
+      <PublicNavMenu/>
+      <main className="home pt-40">
+        <Starfield/>
+        <h1 className="font-grotesk text-9xl">supr<span className="text-accent">nova</span></h1>
+        <div className="card">
+          <p>{config.description}</p>
+        </div>
+      </main>
+    </>
   );
 }
