@@ -1,5 +1,3 @@
-import styles from "./header.module.css"
-
 type Props = {
   title: string;
   subtitle: string;
@@ -8,10 +6,10 @@ type Props = {
 
 export default function Header({ title, subtitle, description }: Props) {
   return (
-    <header className={styles.header}>
-      <h1>{title}</h1>
-      <h2>{subtitle}</h2>
-      <h3>{description}</h3>
+    <header className="text-center">
+      <h1 className="font-4xl">{title}</h1>
+      <h2 className="font-2xl text-accent">{subtitle}</h2>
+      <h3 className="font-xl text-text2">{description}</h3>
     </header>
   );
 }
