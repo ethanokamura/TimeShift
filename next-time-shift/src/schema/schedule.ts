@@ -1,5 +1,5 @@
 import { DAYS_OF_WEEK } from "../data/constants";
-import { timeToInt } from "@lib/formatters";
+import { timeToInt } from "@/lib/formatters";
 import { z } from "zod"
 
 export const scheduleFormSchema = z.object({

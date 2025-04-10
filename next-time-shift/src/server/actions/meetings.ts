@@ -1,10 +1,10 @@
 "use server"
 
+import "server-only"
+
 import { db } from "@/src/drizzle/db";
 import { getValidTimesFromSchedule } from "@/src/lib/validTimes";
 import { meetingActionSchema } from "@/src/schema/meetings";
-import { auth } from "@clerk/nextjs/server";
-import "server-only"
 import { z } from "zod";
 import { createCalendarEvent } from "../googleCalendar";
 import { redirect } from "next/navigation";
