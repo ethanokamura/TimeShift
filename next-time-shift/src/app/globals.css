@@ -1,161 +1,115 @@
-@import "open-props/style";
+@import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #10141a;
-  --background-2: #151b24;
-  --surface: #1c232e;
-  --accent: #61AFEF;
-  --text: #e1e6f0;
-  --text2: #969eb0;
-  --text3: #666e7d;
-  --content-width: 90ch;
+@theme {
+  --color-background: #10141a;
+  --color-background-2: #151b24;
+  --color-surface: #1c232e;
+  --color-accent: #61AFEF;
+  --color-destructive: #e07575;
+  --color-text: #e1e6f0;
+  --color-text2: #969eb0;
+  --color-text3: #666e7d;
+  --width-content-width: 90ch;
 }
 
+@layer base {
+  html::-webkit-scrollbar { display: none; }
 
-*::-webkit-scrollbar { display: none; }
+  html {
+    @apply h-screen w-screen p-0 m-0 text-text bg-gradient-to-t from-background to-background-2 bg-fixed font-semibold
+  }
 
-* {
-  outline: none;
-  user-select: none;
+  body {
+    @apply p-0 m-0 w-full h-full
+  }
+
+  main {
+    @apply max-w-4xl mx-auto bg-fixed bg-cover px-10 pb-20 pt-48
+  }
+
+  section {
+    @apply flex flex-col gap-5 md:gap-8
+  }
+
+  h1, h2, h3 { @apply font-bold transition-all ease-linear duration-300; }
+
+  h1 {
+    @apply my-5 text-4xl md:text-6xl
+  }
+
+  h2 {
+    @apply my-3 text-2xl md:text-4xl
+  }
+
+  h3 {
+    @apply my-2 text-lg md:text-2xl
+  }
+
+  hr {
+    @apply h-[2px] rounded-lg my-4 bg-text3 opacity-25 border-0
+  }
+
+  p, li {
+    @apply text-text2 text-lg md:text-xl;
+  }
+
+  li {
+    @apply text-text3;
+  }
+
+  label {
+    @apply my-2 block md:text-lg;
+  }
+
+  input, textarea {
+    @apply w-full outline-none bg-background border-none rounded px-3 py-2;
+  }
+
+  textarea {
+    @apply h-32
+  }
+
+  button {
+    @apply bg-accent text-xl px-4 py-2 rounded my-5 text-background
+  }
+
+  button, a {
+    @apply transition-all ease-linear duration-100
+  }
+
+  button:hover, a:hover {
+    @apply scale-125
+  }
 }
 
-html {
-  height: 100vh;
-  height: 100dvh;
-  width: 100vw;
-  padding: 0;
-  margin: 0;
-  
-  color: var(--text);
-  background: linear-gradient(
-    var(--background-2),
-    var(--background)
-  );
-  background-size: cover;
-  background-attachment: fixed;
+@layer components {
+  .home {
+    @apply pt-20 text-center flex flex-col items-center gap-4
+  }
 
-  font-family: var(--font-rubik);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  .card {
+    @apply w-fit text-center bg-surface/50 rounded shadow-2xl px-4 py-2 backdrop-blur-sm
+  }
+
+  .card h1 {
+    @apply my-3 text-2xl md:text-4xl
+  }
 }
 
-body {
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  height: 100%;
+@layer utilities {
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 9999px;
+    opacity: 0.8;
+    animation: twinkle 2s infinite ease-in-out alternate;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.3; }
+    100% { opacity: 1; }
+  }
 }
-
-h1, h2, h3 {
-  font-weight: var(--font-weight-8);
-  transition: all 0.3s linear;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: var(--size-2) 0px;
-}
-
-h1 { font-size: var(--font-size-6); }
-h2 { font-size: var(--font-size-5); }
-h3 { font-size: var(--font-size-4); }
-h4 { font-size: var(--font-size-3); }
-
-button {
-  background-color: var(--surface);
-  background-repeat: no-repeat;
-  border: none;
-  border-radius: var(--radius-2);
-  padding: var(--size-2);
-  cursor: pointer;
-  overflow: hidden;
-  outline: none;
-  color: var(--text);
-  text-decoration: none;
-  font-size: var(--font-size-4);
-  font-weight: var(--font-weight-8);
-  transition: transform 0.1s linear;
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: var(--font-weight-8);
-  transition: transform 0.1s linear;
-}
-
-button:hover, a:hover {
-  transform: scale(1.25);
-}
-
-span {
-  color: var(--text3);
-  font-size: var(--font-size-2);
-}
-
-p, li {
-  color: var(--text2);
-  font-size: var(--font-size-3);
-  font-weight: var(--font-weight-5);
-}
-
-b {
-  font-weight: var(--font-weight-8);
-}
-
-main {
-  max-width: var(--content-width);
-  padding: min(var(--size-7), 5%) min(var(--size-10), 5%);
-  margin: auto;
-  padding-bottom: min(var(--size-content-1), 40%);
-}
-
-hr {
-  height: 2px;
-  border-radius: var(--radius-2);
-  margin: var(--size-5) 0;
-  background-color: var(--text3);
-  opacity: 0.25;
-  border: none;
-}
-
-textarea {
-  width: 100%;
-  background-color: var(--surface);
-  border: 2px solid var(--text2);
-  padding: var(--size-2);
-  border-radius: var(--radius-2);
-  color: var(--text);
-  font-family: var(--font-rubik);
-}
-
-textarea::placeholder {
-  color: var(--text3);
-  font-family: var(--font-rubik);
-}
-
-footer {
-  display: flex;
-  position: fixed;
-  align-items: end;
-  bottom: 0;
-  left: var(--size-5);
-  padding: var(--size-5);
-  height: 15%;
-  width: 100%;
-  color: var(--text2);
-  background: linear-gradient(to top, var(--background), transparent);
-}
-
-/* Media Queries - For responsive design */
-
-/* Mobile (max-width: 768px) */
-@media (max-width: 768px) {}
-
-/* Tablet (max-width: 1024px) */
-@media (max-width: 1024px) {}
-
-/* Desktop (min-width: 1025px) */
-@media (min-width: 1025px) {}
-
-/* Large screens (min-width: 1440px) */
-@media (min-width: 1440px) {}
